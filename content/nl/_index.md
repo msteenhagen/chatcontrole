@@ -15,7 +15,7 @@ images: []
 
 ## Wat is er aan de hand?
 
-De Europese Commissie heeft een nieuw wetsvoorstel ingediend om bepaalde vormen van criminaliteit tegen te gaan, door om alle digitale berichten van alle burgers in de EU te scannen. De voorgestelde wet is slecht. De wet vereist dat alle berichten op online communicatiediensten in de EU worden gecontroleerd, zonder enige grond van verdenking, zonder rechtelijk bevel. 
+De Europese Commissie heeft een nieuw wetsvoorstel ingediend om bepaalde vormen van criminaliteit tegen te gaan, door alle digitale berichten van alle burgers in de EU te scannen. De voorgestelde wet is slecht. De wet vereist dat alle berichten op online communicatiediensten in de EU worden gecontroleerd, zonder enige grond van verdenking, zonder rechtelijk bevel. 
 
 Wat betekent dit concreet? Concreet betekent dit dat al je e-mails, al je berichtjes, en al je video- en spraakoproepen automatisch gescand zullen worden om te kijken of er eventueel iets illegaals in voorkomt. 
 
