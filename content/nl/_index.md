@@ -38,7 +38,7 @@ Informeer zoveel mogelijk mensen. Deel de link naar deze pagina! Email [je Europ
 
 ### ✍️ 2. Teken de petitie
 
-Teken [de petitie](https://civicrm.edri.org/stop-scanning-me) tegen chatcontrole wetsvoorstel van de Europese Commissie (formulier in het Engels 🇬🇧). Hoe meer mensen tekenen, hoe sterker het signaal dat deze wet niet gewenst is.
+Teken [de petitie](https://civicrm.edri.org/stop-scanning-me) tegen het chatcontrole wetsvoorstel van de Europese Commissie (formulier in het Engels 🇬🇧). Hoe meer mensen tekenen, hoe sterker het signaal dat deze wet niet gewenst is.
 
 ### 🤝 3. Help mee
 
