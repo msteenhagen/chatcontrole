@@ -1,0 +1,1391 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   version="1.1"
+   width="300"
+   height="600"
+   viewBox="0 0 300 600"
+   onload="run()"
+   overflow="auto"
+   style="font-family: Roboto, sans-serif; border-radius: 10px;"
+   id="movie"
+   sodipodi:docname="chatapp.svg"
+   inkscape:version="1.2.2 (b0a8486541, 2022-12-01)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview90"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     showgrid="false"
+     inkscape:zoom="1.1125147"
+     inkscape:cx="371.23105"
+     inkscape:cy="272.80538"
+     inkscape:window-width="1920"
+     inkscape:window-height="1011"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="contact_name_box" />
+  <defs
+     id="defs55">
+    <symbol
+       id="kaereste_foto"
+       width="60"
+       height="200">
+      <g
+         style="fill: purple; stroke: purple;"
+         id="g18">
+        <circle
+           cx="20"
+           cy="20"
+           r="20"
+           id="circle2" />
+        <line
+           x1="20"
+           y1="40"
+           x2="20"
+           y2="60"
+           id="line4" />
+        <ellipse
+           cx="20"
+           cy="110"
+           rx="10"
+           ry="50"
+           id="ellipse6" />
+        <!-- left arm -->
+        <polyline
+           fill="none"
+           points="15,70 5,50 0,40"
+           id="polyline8" />
+        <!-- right arm -->
+        <polyline
+           fill="none"
+           points="25,70 35,50 40,40"
+           id="polyline10" />
+        <!-- left leg -->
+        <polyline
+           fill="none"
+           points="15,155 5,135 0,125"
+           id="polyline12" />
+        <!-- right leg -->
+        <polyline
+           fill="none"
+           points="25,155 35,135 40,125"
+           id="polyline14" />
+        <!-- the thing -->
+        <text
+           x="14"
+           y="160"
+           style="font: bold 20px sans-serif"
+           fill="black"
+           id="text16">?</text>
+      </g>
+    </symbol>
+    <symbol
+       id="strand"
+       width="80"
+       height="1200">
+      <rect
+         width="80"
+         height="130"
+         fill="yellow"
+         id="rect21" />
+      <g
+         style="fill: purple; stroke: purple;"
+         id="g35">
+        <circle
+           cx="60"
+           cy="20"
+           r="20"
+           id="circle23" />
+        <!-- spine -->
+        <line
+           x1="55"
+           y1="40"
+           x2="22"
+           y2="100"
+           id="line25" />
+        <!-- left leg -->
+        <polyline
+           fill="none"
+           points="20,100 60,90 35,125"
+           id="polyline27" />
+        <!-- right leg -->
+        <polyline
+           fill="none"
+           points="20,100 50,75 25,120"
+           id="polyline29" />
+        <!-- left arm -->
+        <polyline
+           fill="none"
+           points="37,70 20,45"
+           id="polyline31" />
+        <!-- right arm + bucket -->
+        <polyline
+           fill="none"
+           points="39,71 70,50"
+           id="polyline33" />
+      </g>
+    </symbol>
+    <symbol
+       id="flag_denmark"
+       width="20"
+       height="15">
+      <path
+         fill="#c8102e"
+         d="M0,0H20V15H0Z"
+         id="path38" />
+      <path
+         fill="#fff"
+         d="M0,6H6V0H8V6H20V8H8V15H6V8H0Z"
+         id="path40" />
+    </symbol>
+    <symbol
+       id="flag_uk"
+       width="50"
+       height="30">
+      <clipPath
+         id="t">
+        <path
+           d="M25,15h25v15zv15h-25zh-25v-15zv-15h25z"
+           id="path43" />
+      </clipPath>
+      <path
+         d="M0,0v30h50v-30z"
+         fill="#012169"
+         id="path46" />
+      <path
+         d="M0,0 50,30M50,0 0,30"
+         stroke="#fff"
+         stroke-width="6"
+         id="path48" />
+      <path
+         d="M0,0 50,30M50,0 0,30"
+         clip-path="url(#t)"
+         stroke="#C8102E"
+         stroke-width="4"
+         id="path50" />
+      <path
+         d="M-1 11h22v-12h8v12h22v8h-22v12h-8v-12h-22z"
+         fill="#C8102E"
+         stroke="#FFF"
+         stroke-width="2"
+         id="path52" />
+    </symbol>
+  </defs>
+  <script
+     type="application/ecmascript"
+     id="script57"><![CDATA[
+'use strict';
+
+const svgns = "http://www.w3.org/2000/svg";
+
+// must be the same as the SVG dimensions
+const width = 300;
+const height = 550;
+
+const line_height = 14;
+const bubble_padding = 6;
+const bubble_spacing = 5;
+const visible_chat_area = {'top': 60,
+                           'bottom': height - 100 // minus status & input areas
+};
+
+var typing_speed = 50;
+function set_typing_speed(new_speed) {
+    typing_speed = new_speed;
+}
+function get_typing_speed() {
+    return typing_speed; // prevent closure capture
+}
+
+var conversation_count = 0;
+var current_dialog = null;
+
+var current_discussion_index = parseInt(new URLSearchParams(location.search).get('discussion') ?? 0);
+var current_language = new URLSearchParams(location.search).get('lang') ?? 'da';
+<!-- if (current_language==='tok') current_language = 'en'; -->
+
+/// SVG 1.1 doesn't do proper text splitting into several lines.
+/// we need to do it ourselves.
+function split_text_into_lines(text, upper_line_length) {
+  let result = [];
+
+  while(text.length) {
+    if(text.length < upper_line_length) {
+      result.push(text);
+      break; // we are done
+    }
+
+    let found_split_point = false;
+    for(let i = upper_line_length; i; i--) {
+      if(text[i] == ' ') {
+        result.push(text.slice(0, i));
+        text = text.slice(i+1);
+        found_split_point = true;
+        break;
+      }
+    }
+
+    if(!found_split_point) {
+      // no <space> found. Split at character boundary instead
+      result.push(text.slice(0, upper_line_length));
+      text = text.slice(upper_line_length);
+    }
+  }
+
+  return result;
+}
+
+function is_hyperlink(str) {
+  return str.startsWith('http');
+}
+
+function create_link_node(url, line) {
+  let link = create_svg_node('a', {target:'_blank', href: url});
+  link.appendChild(document.createTextNode(line));
+  return link;
+}
+
+/// A class holding a text chat message.
+///
+/// *ChatMessages are owned by a Dialog.
+function TextChatMessage(message_text, is_myself) {
+  let lines = split_text_into_lines(message_text, 28);
+  let bubble_color = (is_myself)? '#0084FF': '#E4E6EB';
+  let text_color = (is_myself)? 'white': 'black';
+  let container = document.getElementById('messages');
+  let make_link = is_hyperlink(message_text);
+
+  // attributes
+  this.height = 0; // height on screen when fully visible
+  this.group = null; // a <g> with a transform=translate(0,y_shift) attribute
+
+  /// Render the chat message on the screen
+  this.draw = function(y_offset, y_shift) {
+    let group = create_svg_node('g', {'transform': `translate(0, ${y_shift})`});
+
+    let x = (is_myself ? 195 : 105);
+    let text = create_svg_node('text', {
+      'x': `${x}%`,
+      'font-size': `${line_height}px`,
+      'text-anchor': is_myself ? 'end' : 'start'
+    });
+
+    let height_so_far = y_offset;
+
+    lines.forEach(function(line) {
+      let y = height_so_far;
+      let tspan = create_svg_node('tspan', {
+        'x': `${x}%`,
+        'y': `${y + line_height}`, // important: y is lower text baseline
+        'fill': text_color,
+        'width': '5%'
+      });
+      enable_scrolling(tspan)
+
+      if(make_link) {
+        tspan.appendChild(create_link_node(message_text, line));
+      } else {
+        tspan.appendChild(document.createTextNode(line));
+      }
+      text.appendChild(tspan);
+
+      height_so_far += line_height;
+    });
+
+    group.appendChild(text); // needs to be part of the DOM *now*
+    container.appendChild(group);
+    let bubble = create_bubble(text, bubble_color);
+    group.appendChild(bubble);
+    redraw_on_top(text);
+
+    this.height = bubble.getBBox().height + bubble_spacing;
+    this.group = group;
+  }
+
+  /// Move a chat message on the screen (to simulate scrolling)
+  this.shift_y_pos = function(by) {
+    redraw_on_top(document.getElementById('contact_name_box'));
+    this.group.setAttribute('transform', `translate(0, ${by})`);
+  }
+}
+
+function ReportChatMessage(_exclamation_mark, is_myself) {
+  let line = (current_language=='da')?['⚠ dit bericht is gerapporteerd']: ['⚠ bericht is gerapporteerd'];
+  let bubble_color = '#FFFFFF';
+  let text_color = '#FF0000';
+  let container = document.getElementById('messages');
+
+  // attributes
+  this.height = 0; // height on screen when fully visible
+  this.group = null; // a <g> with a transform=translate(0,y_shift) attribute
+
+  /// Render the chat message on the screen
+  this.draw = function(y_offset, y_shift) {
+    let group = create_svg_node('g', {'transform': `translate(0, ${y_shift})`});
+
+    let x = 150; // middle
+    let text = create_svg_node('text', {
+      'x': `${x}%`,
+      'font-size': `${line_height}px`,
+      'text-anchor': 'middle',
+      'font-weight': 'bold'
+    });
+
+    let tspan = create_svg_node('tspan', {
+      'x': `${x}%`,
+      'y': `${y_offset + line_height}`, // important: y is lower text baseline
+      'fill': text_color,
+      'width': '5%'
+    });
+    enable_scrolling(tspan)
+
+    tspan.appendChild(document.createTextNode(line));
+    text.appendChild(tspan);
+
+    group.appendChild(text); // needs to be part of the DOM *now*
+    container.appendChild(group);
+    let bubble = create_bubble(text, bubble_color);
+    group.appendChild(bubble);
+    redraw_on_top(text);
+
+    this.height = bubble.getBBox().height + bubble_spacing;
+    this.group = group;
+  }
+
+  /// Move a chat message on the screen (to simulate scrolling)
+  this.shift_y_pos = function(by) {
+    redraw_on_top(document.getElementById('contact_name_box'));
+    this.group.setAttribute('transform', `translate(0, ${by})`);
+  }
+}
+
+/// A class holding a image-based chat message.
+///
+/// *ChatMessages are owned by a Dialog.
+function ImageChatMessage(symbol_id, is_myself) {
+  let container = document.getElementById('messages');
+  let bubble_color = (is_myself)? 'white': '#DDFF66';
+
+  // attributes
+  this.height = 0; // height on screen when fully visible
+  this.group = null; // a <g> with a transform=translate(0,y_shift) attribute
+
+  this.draw = function(y_offset, y_shift) {
+    let group = create_svg_node('g', {'transform': `translate(0, ${y_shift})`});
+
+    let x = (is_myself ? 190 : 110);
+    let img = create_svg_node('use', {
+        'href': symbol_id,
+        x: `${x}%`,
+        y: y_offset,
+    });
+
+    group.appendChild(img); // needs to be part of the DOM *now*
+    container.appendChild(group);
+    let bubble = create_bubble(img, bubble_color);
+    group.appendChild(bubble);
+    redraw_on_top(img);
+
+    this.height = bubble.getBBox().height + bubble_spacing;
+    this.group = group;
+  }
+
+  this.shift_y_pos = function(by) {
+    redraw_on_top(document.getElementById('contact_name_box'));
+    this.group.setAttribute('transform', `translate(0, ${by})`);
+  }
+}
+
+/// A class for holding a final message that says that the chat partner is offline
+///
+/// *ChatMessages are owned by a Dialog.
+function OfflineChatMessage(dollar_message, _is_myself) {
+  let offline_message = dollar_message.substring(1);
+  let container = document.getElementById('messages');
+
+  // attributes
+  this.height = 0; // height on screen when fully visible
+  this.group = null; // a <g> with a transform=translate(0,y_shift) attribute
+
+  this.draw = function(y_offset, y_shift) {
+    let group = create_svg_node('g', {'transform': `translate(0, ${y_shift})`});
+    let height_so_far = y_offset;
+
+    function post_process(element) {
+      enable_scrolling(element);
+      height_so_far += line_height;
+      group.appendChild(element);
+      redraw_on_top(element);
+    }
+
+    let x = 101;
+    let bar = create_svg_node('rect', {
+      'x': `${x}%`,
+      'y': `${height_so_far + line_height}`,
+      'fill': '#CCCCCC',
+      'width': '90%',
+      'height': '4px'
+    });
+    post_process(bar);
+    height_so_far += 5; // spacing
+
+    let text = create_svg_node('text', {
+      'x': `${x}%`,
+      'y': `${height_so_far + line_height}`,
+      'font-size': `${line_height}px`,
+      'text-anchor': 'start'
+    });
+    text.appendChild(document.createTextNode(offline_message));
+    post_process(text);
+
+    let back_link_text = create_svg_node('text', {
+      'x': `${x}%`,
+      'y': `${height_so_far + line_height}`,
+      'font-size': `${line_height}px`,
+      'text-anchor': 'start',
+      'style': 'text-decoration: underline',
+      'fill': 'blue'
+    });
+    let back_link = create_svg_node('a', {
+      'href': 'javascript: swipe_viewport()',
+    });
+
+    let link_text = 'terug naar contactenlijst';
+    if(current_language == 'en') {
+      link_text = 'back to the contact list';
+    }
+    back_link_text.appendChild(document.createTextNode(link_text));
+    back_link.appendChild(back_link_text);
+    post_process(back_link);
+
+    container.appendChild(group);
+    this.height = height_so_far - y_offset;
+    this.group = group;
+
+  }
+
+  this.shift_y_pos = function(by) {
+    redraw_on_top(document.getElementById('contact_name_box'));
+    this.group.setAttribute('transform', `translate(0, ${by})`);
+  }
+}
+
+function create_chat_message(content, is_myself) {
+  let constr = null;
+  if(content.startsWith('#')) {
+    constr = ImageChatMessage;
+  } else if(content.startsWith('$')) {
+    constr = OfflineChatMessage;
+  } else if(content.startsWith('!')) {
+    constr = ReportChatMessage;
+  } else {
+    constr = TextChatMessage;
+  }
+  return new constr(content, is_myself);
+}
+
+/// Promise-based version of setTimeout
+const wait = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
+/// toggle viewport between message list and contact list
+/// That means: show either the left or right side of the SVG
+function swipe_viewport() {
+  let svg = document.getElementsByTagName('svg')[0];
+  let coords = svg.getAttribute('viewBox').split(' ');
+  let x = parseInt(coords.shift());
+  if(x == 0) {
+      // moving from messages to contacts
+      var step = 5;
+      var end = width;
+  } else {
+      // moving from contacts to messages
+      var step = -5;
+      var end = 0;
+  }
+
+  let viewBox_suffix = coords.join(' '); // only 3 elements
+
+  async function animate(resolve, reject) {
+    while(x!=end) {
+      await wait(1);
+      x += step;
+      svg.setAttribute('viewBox', `${x} ${viewBox_suffix}`);
+    }
+    resolve();
+  };
+  new Promise(animate);
+}
+
+
+// Create a chat bubble around an element.
+//
+// The element must already be inside the DOM for this to work.
+function create_bubble(inner_element, color) {
+  const bbox = inner_element.getBBox();
+  let bubble = create_svg_node('rect', {
+    'x': bbox.x - bubble_padding,
+    'y': bbox.y - bubble_padding,
+    'width': bbox.width + 2 * bubble_padding,
+    'height': bbox.height + 2 * bubble_padding,
+    'rx': 8,
+    'fill': color,
+  });
+  enable_scrolling(bubble);
+  return bubble;
+}
+
+function create_svg_node(tag_name, attrs) {
+  let node = document.createElementNS(svgns, tag_name);
+  for(let attr in attrs) {
+    node.setAttribute(attr, attrs[attr]);
+  }
+  return node;
+}
+
+/// Ensure that an element is redrawn above all other elements
+///
+/// The element's children will also be redrawn on top
+function redraw_on_top(element) {
+  let parent = element.parentNode;
+  parent.appendChild(parent.removeChild(element));
+}
+
+function removeAllChildren(parentNode) {
+  while(parentNode.firstChild) {
+    parentNode.removeChild(parentNode.lastChild);
+  }
+}
+
+function start_chat(index) {
+  current_discussion_index = index;
+
+  let contact = contact_list[current_language][index];
+  let who = contact.name;
+  let indicator = document.getElementById('contact_indicator');
+  indicator.childNodes[0].data = `Contact: ${who}`;
+  removeAllChildren(document.getElementById('messages'));
+  swipe_viewport();
+
+  contact.dialog();
+}
+
+function Dialog() {
+  let conversation_id = ++conversation_count;
+  this.messages = [];
+  this.y_shift = visible_chat_area.top; // for scrolling
+  this.all_elements_height = 0; // also for scrolling
+
+  this.is_active = function() {
+    return conversation_id == conversation_count;
+  }
+
+  async function post_message(dialog, message, is_myself) {
+    if(!is_myself && dialog.messages.length && !message.startsWith('!')) {
+      await wait(message.length * get_typing_speed());
+    } // first message should be instant
+
+    if(!dialog.is_active()) {
+      return; // Do not add messages to old conversation
+    }
+
+    let chat_message = create_chat_message(message, is_myself);
+    chat_message.draw(dialog.all_elements_height, // offset
+                      dialog.y_shift);
+    dialog.all_elements_height += chat_message.height;
+    dialog.messages.push(chat_message);
+
+    let bottom = dialog.all_elements_height + dialog.y_shift;
+    let scroll = Math.max(0, bottom - visible_chat_area.bottom);
+    while(scroll > line_height) {
+      dialog.scroll_by(-line_height);
+      scroll -= line_height;
+      await wait(get_typing_speed());
+    }
+  }
+
+  this.scroll_by = function(change) {
+    this.y_shift += change;
+    this.messages.forEach(msg => msg.shift_y_pos(this.y_shift));
+  }
+
+  this.me = async function(message, will_be_flagged) {
+    await wait(30 * get_typing_speed()); // give me some time to read
+    if(!this.is_active()) return;
+    await type_message(this, message);
+    if(!this.is_active()) return;
+    hit_send_button();
+    await local_message_processing(will_be_flagged);
+    clear_input_field();
+    release_send_button();
+    await post_message(this, message, true);
+    if(will_be_flagged) {
+      await post_message(this, '!flagged', true);
+    }
+  }
+
+  this.you = async function(message, will_be_flagged) {
+    await post_message(this, message, false);
+    if(will_be_flagged) {
+      await post_message(this, '!flagged', true);
+    }
+  }
+
+  this.end = async function(message) {
+    await post_message(this, `$${message}`, true);
+  }
+}
+
+async function type_message(dialog, message) {
+  clear_input_field(); // just to be sure
+  let text = document.getElementById('message_input_data').firstChild;
+
+  let lines = split_text_into_lines(message, 22);
+  for(let line of lines) {
+    text.data = '';
+    for(let c of line) {
+      await wait(get_typing_speed());
+      text.data += c;
+    }
+    if(!dialog.is_active()) break;
+    await wait(0.4 * get_typing_speed()); // otherwise it's too fast
+  }
+}
+
+function hit_send_button() {
+  document.getElementById('message_submit_button').setAttribute('fill', 'white');
+  document.getElementById('message_submit_box').setAttribute('fill', '#888888');
+}
+
+function release_send_button() {
+  document.getElementById('message_submit_button').setAttribute('fill', 'black');
+  document.getElementById('message_submit_box').setAttribute('fill', '#CCCCCC');
+}
+
+function clear_input_field() {
+  let element = document.getElementById('message_input_data')
+  removeAllChildren(element);
+  element.appendChild(document.createTextNode(''));
+}
+
+async function local_message_processing(will_be_flagged) {
+  let text_element = document.getElementById('message_status');
+  let indicator = text_element.childNodes[0];
+  indicator.data = 'scannen voor illegale inhoud';
+  await wait(16 * get_typing_speed());
+  if(will_be_flagged) {
+    let box = document.getElementById('message_status_box');
+    text_element.setAttribute('fill', '#ce2900');
+    box.setAttribute('fill', 'yellow');
+    indicator.data = 'Verdachte inhoud rapporteren';
+    await wait(20 * get_typing_speed());
+    text_element.setAttribute('fill', 'white');
+    box.setAttribute('fill', '#ce2900');
+  }
+  indicator.data = 'bericht versleutelen';
+  await wait(11 * get_typing_speed());
+  indicator.data = 'bericht versturen';
+  await wait(10 * get_typing_speed());
+  indicator.data = 'bericht is verstuurd';
+}
+
+async function scroll_up() {
+  current_dialog.scroll_by(line_height);
+}
+
+async function scroll_down() {
+  current_dialog.scroll_by(-line_height);
+}
+
+const on_wheel = (e) => { e.deltaY < 0 ? scroll_up() : scroll_down() }
+
+const enable_scrolling = (elem) => elem.addEventListener('wheel', on_wheel);
+
+// enable scrolling
+document.addEventListener(
+    "DOMContentLoaded",
+    () => document.getElementById("message_box").addEventListener('wheel', on_wheel)
+)
+
+async function switch_language(language_code) {
+  let url = new URL(document.location);
+  url.searchParams.set('lang', language_code);
+  url.searchParams.set('discussion', current_discussion_index);
+  location.href = url;
+}
+
+async function dialog_ven_da() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.you("hoi");
+  await d.me("hoi, hoe gaat het?");
+  await d.you('Goed! Heb je van die nieuwe EU "chatcontrole" wet gehoord?');
+  await d.me("Nee");
+  await d.me("Waar gaat het over?");
+  await d.you('De Europese Commissie is van plan om alle chatberichten in de EU te gaan lezen');
+  await d.me('Oh ja? Maar we versleutelen al onze gesprekken toch?');
+  await d.me('Pech gehad!');
+  await d.you('Daar hebben ze rekening mee gehouden. Het afluisteren gaat gebeuren voor de versleutelstap op je telefoon!');
+  await d.me('Dat klinkt behoorlijk dom. Waarom zouden ze dat willen doen?');
+  await d.you('Ze zeggen dat het is om criminaliteit te voorkomen');
+  await d.you("Maar dat is onzin");
+  await d.me('Al onze berichtjes gaan dus gescand worden voor criminaliteitsbestrijding? Dat klinkt echt heel dom!', true);
+  await d.you('Je kan er hier meer over lezen:');
+  await d.you('https://chatcontrole.nl');
+  await d.me("Okee dank je");
+  await d.end('Je vriendin is nu offline');
+  }
+
+async function dialog_ven_en() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.me("hi");
+  await d.you("hi, what's up?");
+  await d.you('Have you heard about the new EU law "ChatControl"?');
+  await d.me("No, I haven't");
+  await d.me("What is it about?");
+  await d.you('The EU commission plans to read all chat messages in the EU');
+  await d.me('Yeah? But we encrypt all of our chats? Tough luck!');
+  await d.you('That has been taken into account. The eavesdropping will happen before the encryption step on your phone!');
+  await d.me('That sounds stupid. Why do they want to do that?');
+  await d.you('They claim that this is for protecting children on the internet');
+  await d.you("But that doesn't make any sense.");
+  await d.me('All of our messages will be scanned because of children on the internet? That sounds really stupid!', true);
+  await d.you('Here you can read more about it:');
+  await d.you('https://chatcontrol.dk');
+  await d.end('Your friend is offline now');
+  }
+
+async function dialog_mor_da() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.you("Ik heb wat oude familiefoto\'s van onze vakantie 15 jaar geleden gevonden");
+  await d.you("Hier ben je op het strand aan het spelen");
+  await d.you("#strand");
+  await d.me('Bedankt, maar ik wil liever niet dat mijn naaktfoto\'s op het internet komen', true);
+  await d.you('Waarom maak je je daar zorgen over? Dit ben jij gewoon als kind heel lang geleden');
+  await d.me('Het internet is niet zo\'n goeie plek op privéfoto\'s te delen');
+  await d.me('Je raakt er heel makkelijk de controle over kwijt');
+  await d.you('Nou, maar we delen ze nu toch gewoon tussen ons tweeën?');
+  await d.me('Klopt. En we versleutelen onze berichtjes, dus het zal nu wel okee zijn');
+  await d.me('Maar de Europese Commissie wil straks alle berichten te scannen, zelfs als ze versleuteld zijn');
+  await d.me('Dus dan zijn wij tweeën niet de enigen die toegang hebben tot al onze privéfoto\'s');
+  await d.you('Dat verbaast me. Dan geef ik je de volgende keer wel een USB-stick mee als je weer op bezoek komt');
+  await d.me('Prima idee! Bedankt mam 😀');
+  await d.end('Je moeder is nu offline');
+}
+
+async function dialog_mor_en() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.you("I have found some old family photos from our holiday from 10 years ago");
+  await d.you("This is you playing on the beach");
+  await d.you("#strand");
+  await d.me('Thanks, but I would rather not have my nude pictures on the internet', true);
+  await d.you('Why do you worry about that? This is just you as a child a long time ago');
+  await d.me('The Internet is not a good place to share very private pictures');
+  await d.me('It is very easy to lose control over them');
+  await d.you('Well, but it is just us who share the pictures?');
+  await d.me('We encrypt our messages, so it is kinda fine.');
+  await d.me('But the EU commission wants to introduce a function for scanning all messages even if they are encrypted');
+  await d.me('It won\'t be just us two who will have access to our private pictures');
+  await d.you('That surprises me. But then I think I will give you a USB stick next time you visit me');
+  await d.me('Good idea! Thanks :-)');
+  await d.end('Your mom is offline now');
+}
+
+async function dialog_kaereste_da() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.me('goeie morgen schoonheid');
+  await d.you('hey hoe is het?');
+  await d.you("ik voel me... heet");
+  await d.you('#kaereste_foto', true);
+  await d.me('Zo hé 😍! Jij ziet er GOED uit', true);
+  await d.me('oh nee... ik denk dat ons gesprek zojuist gerapporteerd is...');
+  await d.you('Gerapporteerd????? Wat bedoel je?');
+  await d.me('Er is die nieuwe Europese wet, chatcontrole. Ze scannen al onze gesprekken, zelfs als die versleuteld zijn');
+  await d.you('Maar waarom heeft het ons gerapporteerd?');
+  await d.me('Ze gebruiken algoritmes om afbeeldingen te scannen. Misschien denkt het systeem dat je onder de 18 bent...?', true);
+  await d.you("MAAR IK BEN 27!");
+  await d.me("Tjsa... het is heel onbetrouwbaar. Ik heb gehoord dat het ook erger is voor mensen met een donkere huidskleur of mensen die trans zijn...");
+  await d.you('Dus wat gebeurt er nu?');
+  await d.me('Nou, de politie gaat de foto misschien bekijken...');
+  await d.you("WAT?! DAT IS IDIOOT! IK WIL NIET DAT DE POLITIE MIJN NAAKTFOTO\'S ZIET!!");
+  await d.you("WAT ALS ZE DIE DELEN OF ONLINE ZETTEN?");
+  await d.you("DAT IS EEN GIGANTISCHE INBREUK OP MIJN PRIVACY!");
+  await d.end('Je lieffie is nu offline');
+}
+
+async function dialog_kaereste_en() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.me('Morning, gourgeous');
+  await d.you('Hey ;) how are you doing?');
+  await d.you("I'm feeling... cheeky");
+  await d.you('#kaereste_foto', true);
+  await d.me('Wow 😍! You look STUNNING', true);
+  await d.me('oh no... i think our conversation was just reported...');
+  await d.you('Reported????? What do you mean?');
+  await d.me('There is this new EU law, chatcontrol, it scans everything in our conversations, even when they are encrypted');
+  await d.you('But why did it report us?');
+  await d.me('It uses Artificial Intelligence to scan pictures, I think it thinks you are underage.. ');
+  await d.you("BUT I'M 27!", true);
+  await d.me("Yeah... it's really unreliable. I heard it is even worse for minorities and trans folk...");
+  await d.you('So what happens now?');
+  await d.me('Well, the police might see  the picture...');
+  await d.you("WHAT?! THAT IS INSANE! I DON'T WANT THE POLICE TO SEE MY NUDES.");
+  await d.you("WHAT IF THEY SHARE THEM OR POST THEM ONLINE?");
+  await d.you("THIS IS A MASSIVE INFRINGEMENT ON MY PRIVACY!");
+  await d.end('Your better half is offline now');
+}
+
+async function dialog_politi_da() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.me('Hallo, ik heb een vraag');
+  await d.you('Vraagt u maar');
+  await d.me('Heeft u van chatcontrole gehoord en wat denkt u er van?');
+  await d.you('Ik heb er van gehoord. Het is eigenlijk een heel erg slecht idee.');
+  await d.you('Het probleem is dat het heel veel vals-positieve resultaten gaat geven die we dan handmatig moeten onderzoeken.');
+  await d.you("Ik wil helemaal niet iedereens privéberichten lezen. Dat zijn vertrouwelijke gesprekken.");
+  await d.you("En ik vind het niks dat mijn collega's straks zouden kunnen zien wat ik aan m'n partner schrijf, alleen maar omdat er de mogelijkheid bestaat ik tijdens het chatten eventueel iets illegaals zou kunnen doen.");
+  await d.you("Stel je even voor hoe absurd het idee is: Waarom tappen we niet alle telefoons af? Of plaatsen een agent in iedere huiskamer? Dan zouden we best wel eens wat misdaden kunnen opsporen!");
+  await d.you('Maar dan heb je totale surveillance en dat is niet langer een vrije samenleving.');
+  await d.me('Bedankt voor uw antwoord');
+  await d.end('De politieagent is nu offline');
+}
+
+async function dialog_politi_en() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.me('Hi, I have a question');
+  await d.me('Have you heard about ChatControl and what do you think about it?');
+  await d.you('I know about it. It is actually a really bad idea');
+  await d.you('The problem is that there are many false positive hits that need to be analysed manually');
+  await d.you("And I do not want to read through people's private messages. These are confidential conversations");
+  await d.you("I don't like that my collegues can potentially see what I write to my partner, just because I could potentially do something illegal while chatting");
+  await d.you("Just think about how absurd the idea is: Why don't we wiretap all phones? There will be some crimes that we will detect!");
+  await d.you('But then we have total surveillance and no longer a free society.');
+  await d.end('The police officer is offline now');
+}
+
+async function dialog_support_da() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.you('Welkom bij de IT Helpdesk van ChatWereld. Hoe kan ik je helpen?');
+  await d.me('Ik vermoed dat jullie chatprogramma mijn eind-tot-eind versleutelde berichten aan het scannen is. Klopt dat?');
+  await d.you('Ja, dat klopt. Onze baas wilde dat graag');
+  await d.you('Sommige mensen hebben de chatdienst misbruikt om illegaal materiaal te sturen en dat zorgde voor slechte publiciteit. Daarom wilde de baas alle eind-tot-eind versleutelde berichten scannen');
+  await d.me('Oh ja?');
+  await d.you("Om heel eerlijk te zijn: Criminaliteit is verschrikkelijk, maar ik denk niet dat het zinvol is om alle berichten te scannen");
+  await d.you('Bovendien kan de scantechnologie makkelijk misbruikt worden. Zelfs ik als software-ontwikkelaar kan niet eens zien waar onze scanner naar zoekt');
+  await d.you("Misschien zoekt het wel naar alternatieve politieke overtuigingen en bestempelt deze als illegaal, zelfs als ze dat niet zijn?");
+  await d.you('Het is een gevaar voor onze democratie als vertrouwelijke berichten gescand worden voor wat de politici niet bevalt');
+  await d.you('Maar ... het is helaas mijn werk om de surveillance gaande te houden.');
+  await d.me('Hmmm okee bedankt voor de informatie');
+  await d.you('Sorry dat ik je niet iets beters kan aanbieden. Maar ik hoop dat je de situatie begrijpt');
+  await d.me('Tsja, het lost het probleem niet echt op. Maar dan ga ik kijken hoe ik de surveillance in de toekomst kan vermijden', true);
+  await d.me('Bedankt in ieder geval!');
+  await d.you('Bedankt en nog een fijne dag hè');
+  await d.end('De helpdesk is nu offline');
+}
+
+async function dialog_support_en() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.you('Welcome to the ChatWorld support. How can I help you?');
+  await d.me('I suspect that the chat program is scanning my end-to-end encrypted messages. Am I right?');
+  await d.you('Yes, that is a feature that our boss wanted to have');
+  await d.you('Some people have abused the chat service to share child pornography and that gives bad publicity. The boss has therefore chosen to scan all end-to-end encrypted messages');
+  await d.you("Child pornography is a really bad thing. But I don't think it is sensible to scan all messages.");
+  await d.you('and the scan technology can be abused for many things. I as a software engineer can not even see what the scanner is searching for');
+  await d.you("It can be that it will look for alternative political views and marks them as illegal even though they aren't");
+  await d.you('It is a danger to our democracy when confidential messages are scanned for things that the political elite does not like');
+  await d.you('But it is unfortunately my job to keep the surveillance working');
+  await d.me('That does not solve the problem. But thank you for the information. I will look for ways to avoid the surveillance in the future', true);
+  await d.you('I apologize that I can not offer something better. But I hope you understand the situation');
+  await d.end('The chat support is offline now');
+}
+
+async function dialog_nabopige_da() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.you("Hoi! Ik ben het, Ellie!");
+  await d.me("Ellie? Wat doe je met je moeder\'s telefoon?");
+  await d.you("raad eens wie er bijna jarig is!");
+  await d.me("Jij?");
+  await d.you("yep! Ik geef vrijdag een feestje! mama zei dat ik je moest uitnodigen!");
+  await d.me("Hoe oud wordt je dan?");
+  await d.you("tien");
+  await d.me("Tien? Zo hé! Je tiende verjaardag wil ik niet missen! Ik ben er bij!");
+  await d.you("hoe oud ben jij dan?");
+  await d.me("Heel oud! Ik ben 48!", true);
+  await d.you("dan moet je wel heel veel kaarsjes op je taart hebben!");
+  await d.me("Ellie kun je de telefoon alsjeblieft aan je moeder doorgeven?");
+  await d.you("okee");
+  await d.you("Hoi! wat is er? kun je niet bij het feestje zijn?");
+  await d.me("Jawel! Natuurlijk ben ik er bij");
+  await d.me("Maar even een waarschuwing: volgens mij is ons gesprek zojuist gerapporteerd");
+  await d.you("Gerapporteerd? hoezo?");
+  await d.me("Dat is chatcontrole, die nieuwe Europese wet om alle gesprekken te scannen.");
+  await d.me("Het zou bepaalde vormen van criminaliteit moeten voorkomen, maar soms rapporteert het ook compleet normale gesprekken...");
+  await d.you("Dat is idioot 😤 Dus de politie gaat ons gesprek lezen?");
+  await d.me("Zou kunnen...");
+  await d.you("Wat een tijdsverspilling!");
+  await d.you("de politie heeft niet eens tijd om alle zaken die ze al hebben liggen te behandelen, laatstaan om het verjaardagsfeestje van een 10-jarige te onderzoeken");
+  await d.me("Ja... Ik heb een vriend bij de politie, die zegt dat ze nu loeiveel rapporten moeten bekijken...");
+  await d.you("Wat een ramp...");
+  await d.you("Hé ik moet weer gaan maar \'k zie je in ieder geval op het feestje!");
+  await d.me("Zeker, tot dan");
+  await d.end("Vergeet niet om Ellie een kadootje te geven!");
+}
+
+async function dialog_nabopige_en() {
+  let d = new Dialog();
+  current_dialog = d;
+  await d.you("Hi! It's Ellie!");
+  await d.me("Ellie? What are you doing with your mums phone?");
+  await d.you("guess whos birthday it is soon!");
+  await d.me("Yours?");
+  await d.you("yep! I'm having a party on friday! mummy told me to invite you!");
+  await d.me("How old will you be?");
+  await d.you("ten");
+  await d.me("Ten? Wow! I wouldn't want to miss your tenth birthday party! I promise i'll be there!");
+  await d.you("how old are you?");
+  await d.me("Very old! I'm 48!", true);
+  await d.you("you must have lots of candles on your cake!");
+  await d.me("Could you give the phone to your mum please?");
+  await d.you("okay");
+  await d.you("Hi! whats up? can you make it to the party?");
+  await d.me("Yeah! of course, but just to warn you: i think our conversation just got reported");
+  await d.you("Reported? why?");
+  await d.me("It is chatcontrol, a new EU law that scans all our conversations.");
+  await d.me("It's supposed to protect kids from abuse, but sometimes it flags totally normal conversations...");
+  await d.you("That is crazy :o So will the police read our conversation?");
+  await d.me("I'm not sure...");
+  await d.you("What a waste of time!");
+  await d.you("the police don't even have the time to deal with the cases they know about, let alone to investigate a 10 year olds birthday invitation");
+  await d.me("Yeah... I have a friend who is a policeman, he says they have to review loads of reports now...");
+  await d.you("What a disaster... anyway, see you at the party!");
+  await d.end("Don't forget to get Ellie a present!");
+}
+
+async function dialog_hacker_da() {
+    let d = new Dialog();
+    current_dialog = d;
+    await d.you('hé hallo');
+    await d.me("hoi, da\'s een tijd geleden");
+    await d.you('ja, ik had het druk door die chatcontrole');
+    await d.me('oh, dus je weet er al van?');
+    await d.you('ja, aanvallen op de privacy nemen wij hackers vaak erg serieus');
+    await d.you('omdat we denken dat je privéleven op internet net zo privé zou moeten zijn als in het "echte" leven offline');
+    await d.me('en wat moet er dan aan gedaan worden?');
+    await d.you('nou, technisch gezien is de oplossing simpel: je versleutelt je berichten voordat de scanner ze te pakken krijgt');
+    await d.you('met andere woorden, je gebruikt extra software die je berichten beschermt');
+    await d.you('ik heb trouwens zulke software ontwikkelt. Het is een plugin in ons chatprogramma');
+    await d.you('en met mijn plugin blijf je veilig');
+    await d.you('ik stuur je het bestand direct door');
+    await d.me('bedankt, ik heb het ontvangen.');
+    await d.me('Je plugin wordt geïnstalleerd...');
+    await d.you('ik kan me voorstellen dat criminelen in de toekomst iets vergelijkbaars zullen gaan gebruiken om chatcontrole te vermijden');
+    await d.you('en dan treft chatcontrole alleen onschuldige burgers');
+    await d.me('de installatie is compleet');
+    await d.me('ik ga \'m nu activeren');
+    await d.me('ehlnwo dfgien dfignhhug enodeonia endtrio nedosdiaen srnisdite ng');
+    await d.you('rondhkd rtn3vgoh niartne sgornidena sudtor giean drtanodfg undae');
+    await d.you('onfdgnxrt nare ndiatrsn dxvun gdnra edt nadhndgfn  air nd');
+    await d.me('endtrion idfgen teria non daenr bdoadtern udnre draien diae rtdnoa');
+    await d.me('rian dondvglne dgon fgdndul noa gfhdfghsgndga odnane dodfgvunle da');
+    await d.end('chatcontrole werkt niet');
+}
+
+async function dialog_hacker_en() {
+    let d = new Dialog();
+    current_dialog = d;
+    await d.you('Hi there');
+    await d.me("hi, I haven't heard from you in a long time");
+    await d.you('yeah, I was busy because of chatcontrol');
+    await d.me('oh, so you already know about it?');
+    await d.you('yes, attacks on privacy are something that we hackers take very seriously.');
+    await d.you('because we think that the private life on the net should be as private as the "real" life');
+    await d.me('and what should be done about it then?');
+    await d.you('well, from a technical perspective there is a simple solution: You encrypt your messages before the scanner can get a hold of them');
+    await d.you('that means you use an extra software that protects your messages');
+    await d.you('I have actually created such a software. It is a plugin to our chatprogram');
+    await d.you('and with my plugin you will be safe');
+    await d.you('I will send you the file right away');
+    await d.me('Thanks. I have received it.');
+    await d.me('Your plugin is being installed');
+    await d.you('I can imagine that crimials will use something similar in the future to avoid chatcontrol');
+    await d.you('and then chatcontrol will only affect innocent citizens');
+    await d.me('the installation is done. I will activate it now.');
+    await d.me('ehlnwo dfgien dfignhhug enodeonia endtrio nedosdiaen srnisdite ng');
+    await d.you('rondhkd rtn3vgoh niartne sgornidena sudtor giean drtanodfg undae');
+    await d.you('onfdgnxrt nare ndiatrsn dxvun gdnra edt nadhndgfn  air nd');
+    await d.me('endtrion idfgen teria non daenr bdoadtern udnre draien diae rtdnoa');
+    await d.me('rian dondvglne dgon fgdndul noa gfhdfghsgndga odnane dodfgvunle da');
+    await d.end('chatcontrol does not work');
+}
+
+async function dialog_erasmus_da() {
+    let d = new Dialog();
+    current_dialog = d;
+    await d.you('Hé, ik ga binnenkort weer verhuizen!');
+    await d.me('Hey, wat leuk');
+    await d.me('Naar welk land ga je dit keer?');
+    await d.you('Naar Duitsland. Daar heb ik een baan aangenomen.');
+    await d.me('Sjiek! Was dat veel gedoe om te regelen?');
+    await d.you('Nee heel makkelijk eigenlijk. Allemaal binnen de EU hè?');
+    await d.you('Herinner je je trouwens Petra nog, van onze tijd samen in Warschau?');
+    await d.me('Tuurlijk!');
+    await d.you('Petra opent volgende maand een eigen zaak in Roemenië!');
+    await d.me('Wat leuk om te horen! Ik stuur d\'r een berichtje om te feliciteren 😊');
+    await d.you('Echt relaxed hoe je binnen de EU zo makkelijk in een ander land een nieuw leven kan opbouwen');
+    await d.me('Klopt, dat is makkelijk');
+    await d.me('Maar toch gaat niet alles lekker met de EU, hoor');
+    await d.me('Heb je gehoord dat de Europese Commissie alle berichten wil gaan scannen op mogelijk criminele inhoud? Alleen omdat wij *theoretisch gezien* elkaar iets illegaals zouden kunnen sturen');
+    await d.you('Dat meen je niet!');
+    await d.you('Komt dit weer van die politici die niet met het internet zijn opgegroeid??');
+    await d.me('Zou best eens kunnen');
+    await d.you('Tsjonge jonge zeg wat een zooi zeg');
+    await d.you('Ja, ik woon in Europa. Maar ik LEEF ook op het internet!');
+    await d.you('Alleen door het internet kan ik in contact blijven met familie en met vrienden die ik al jaren niet heb gezien');
+    await d.you('Hoe kan ik daar nu mee doorgaan, als al m\'n gesprekken worden afgetapt à la Stasi-Oost-Duitsland?');
+    await d.you('Dan kan ik me echt niet meer vrij uitspreken');
+    await d.me('Ja, het slaat nergens op');
+    await d.me('Tegenwoordig vinden de meeste persoonlijke gesprekken online plaats');
+    await d.you('Die nieuwe surveillancewet klinkt behoorlijk anti-Europees, als je \'t mij vraagt');
+    await d.me('Helemaal mee eens');
+    await d.end('Je oude Erasmusvriend is offline');
+}
+
+async function dialog_erasmus_en() {
+    let d = new Dialog();
+    current_dialog = d;
+    await d.you('Hi, I will soon move again!');
+    await d.me('To which country this time?');
+    await d.you('To Germany. I have gotten a job there.');
+    await d.me('Nice! The EU makes it possible to live and work at many different places.');
+    await d.you('Yes, I appreciate that very much. Do you remember how we meet in Warsaw for the first time?');
+    await d.me('Yes, of course!');
+    await d.you('You certainly remember Pedro from that time. He will get married in Romania next month!');
+    await d.me('Good to hear! I will definitely write to him to congratulate.');
+    await d.me('It is so nice that we know so many people from all over the EU.');
+    await d.me('However, the EU commission wants that all messages will be scanned for child porn. Simply because it is theoretically possible that our digital communication is illegal.');
+    await d.you('Ouch. Is this from the same politicians again, who have not grown up with the internet?');
+    await d.you('I live in Europe. But I also live on the internet. And that is where I meet my big family and my good friends who I haven\'t seen in years.');
+    await d.you('It is the internet that makes it possible for me to keep my personal connections alive over long distances.');
+    await d.you('How should I continue with this, when my conversations are being wiretapped like they did it in the old Stasi-East-Germany?');
+    await d.you('I can no longer speak freely.');
+    await d.me('Yes, this does not make any sense. Modern personal conversation happens online in most cases today.');
+    await d.you('That new surveillance law sounds very anti-european, if you ask me.');
+    await d.me('Totally agree');
+    await d.end('Your old Erasmus friend is offline');
+}
+
+async function dialog_nerd_da() {
+    let d = new Dialog();
+    current_dialog = d;
+    await d.me('Hé, heb je van chatcontrole gehoord?');
+    await d.me('Ik vraag me af hoe het technisch gezien gaat werken?');
+    await d.you('Ja, ik heb er van gehoord');
+    await d.you('Het zit zo. Ze gaan al onze berichten op meerdere dingen scannen:')
+    await d.you('1. Illegale afbeeldingen en videos');
+    await d.you('2. Links naar bekende illegale websites');
+    await d.you('3. Illegale gesprekken');
+    await d.me('Nummer 2 klinkt makkelijk! Je controleert gewoon het adres van de link!');
+    await d.you('Precies! Dat is supermakkelijk. Maar ook ontzettend riskant');
+    await d.you('Neem bijvoorbeeld het recht op abortus, dat om de één of andere bizarre reden steeds weer onder vuur komt te liggen', true);
+    await d.you('Met chatcontrole kunnen ze zo iedereen eruit pikken die informatie over abortus zoekt', true);
+    await d.me('Oei dat is ziekelijk! Ik moet direct aan Polen denken...');
+    await d.you('Inderdaad. Sommige politici zullen dit héél handig vinden');
+    await d.you('Er is enorm veel ruimte voor misbruik.');
+    await d.me('Hoe werkt het met misbruik in videos en afbeeldingen?');
+    await d.you('Er zijn systemen, zoals bijv. PhotoDNA van Microsoft, die algoritmes gebruiken om de hash-waarden van gegevens te berekenen.');
+    await d.you('Dat betekent dat als je een bestand met gegevens hebt, de software één waarde berekent om aan dat bestand toe te wijzen. Deze waarde wordt een "hash" genoemd');
+    await d.me('Dus als ik illegale bestanden zou hebben, dan identificeert de software deze op basis van de hash-waarde van het bestand?');
+    await d.you('Precies');
+    await d.you('Maar er is een fundamenteel probleem: De data kan welke omvang dan ook hebben, terwijl de hash-waarde altijd van beperkte lengte is.');
+    await d.you('Dat betekent dat een oneindige hoeveelheid gegevens in een eindige hoeveelheid waardes geprojecteerd wordt. Dat leidt tot zogenaamde botsingen.');
+    await d.you('Twee compleet verschillende bestanden kunnen dezelfde hash-waarde hebben');
+    await d.you('En daardoor kunnen mensen als crimineel bestempeld worden terwijl ze dat niet zijn');
+    await d.me('Is dat al eens gebeurd?');
+    await d.you('Ja, er zijn al meerdere gevallen waar Microsoft of Google iemands profiel heeft geblokkeerd.');
+    await d.you('Google en Microsoft zouden twee van de meest geavanceerde bedrijven moeten zijn als het op kunstmatige intelligentie aankomt, maar zelfs hun systemen maken veel fouten');
+    await d.you('En ze blokkeren liever een profiel van een onschuldige gebruiker dan dat ze mogelijk illegaal materiaal gaan controleren...');
+    await d.me('Gaat de EU hetzelfde doen?');
+    await d.you('Niet helemaal');
+    await d.you('De Europese Commissie gaat een centrum opzetten met mensen die naar verdachte berichtjes kunnen gaan kijken.');
+    await d.you('En als ze vinden dat de verdenking gegrond is, sluizen ze de informatie door naar Europol');
+    await d.me('Hé maar dat betekent dat zelfs de EU beseft dat deze systemen niet zo goed werken?');
+    await d.you('Je zou het hopen?');
+    await d.you('Maar om nou mensen in zo\'n centrum te zetten om al onze persoonlijke berichten te laten zitten lezen, alleen omdat die zogenaamd "slimme" (dus eigenlijk domme) software zegt dat er iets illegaals tussen zit? Dat lijkt me niet veel beter', true);
+    await d.me('Trouwens, wat is die domme "slimme" technologie die ze gaan gebruiken?');
+    await d.you('Ha! Da\'s nog een interessant verhaal');
+    await d.you('Er is een organisatie die "Thorn" heet. Die produceert software-filters. De acteur Ashton Kutcher is een belangrijke investeerder en lobbyist voor Thorn. Die heeft al heel wat bezoekjes aan de Europese Commissie afgelegd om zijn software aan te prijzen');
+    await d.me('Okee laat me raden: Ashton Kutcher zegt dat zijn software op magische wijze criminaliteit kan oplossen?');
+    await d.you('💯');
+    await d.you('ik heb er zo\'n hekel aan als mensen zo onnadenked op technologie vertrouwen en die marketing-onzin gewoon slikken');
+    await d.me('Dus dat betekent dat de voorgestelde wet eigenlijk het resultaat is van lobbyen door commerciële bedrijven?');
+    await d.you('Het lijkt er wel op');
+    await d.end('De nerd is aan het heropstarten');
+}
+
+async function dialog_nerd_en() {
+    let d = new Dialog();
+    current_dialog = d;
+    await d.me('Hi, have you heard about chatcontrol? I wonder how it will work on a technical level');
+    await d.you('Yes, I have heard about it');
+    await d.you('There are actually several things that have to be identified:')
+    await d.you('1. Childporn in pictures and movies');
+    await d.you('2. Links to know illegal websites');
+    await d.you('3. Illegal chats between adults and children');
+    await d.me('Number 2 sounds easy! You just check the address of the link!');
+    await d.you('Exactly! This is trivial. Now think about the abortion debate in the USA. It will be very easy to identify people who try to find information on abortions.');
+    await d.me('Ouch. That is horrible! I immediately think about Poland. There are some politicians who will like this a lot.');
+    await d.you('Yes, the potential for abuse is huge.');
+    await d.me('How does it work with childporn in movies and pictures?');
+    await d.you('There are systems like e.g. PhotoDNA from Microsoft which use algorithms to compute hash values of data.');
+    await d.you('That means if you have a file with data, the software will calculate a single value of limited size based on the data. This value is called a "hash"');
+    await d.me('If I have illegal files, then the software will identify it based on the hash value of the file?');
+    await d.you('Yes');
+    await d.you('But there is a fundamental problem: The data can be of any size while the hash value is always limited.');
+    await d.you('That means an infinite amount of data is projected into a finite amount of values. This leads to so-called collissions.', true);
+    await d.you('Two completely different files can have the same hash.');
+    await d.you('And thereby people get identified as pedophiles even though they are none');
+    await d.me('Has that happened to someone?');
+    await d.you('Yes, there are several cases, where the access has been blocked by Microsoft or Google.');
+    await d.you('Even though Google and Microsoft are some of the most advanced companies, when it comes to artificial intelligence, their systems are far from perfect.');
+    await d.you('And they rather block some accounts of innocent users instead of checking some potentially disgusting childporn.');
+    await d.me('Will the EU do the same?');
+    await d.you('No. The EU commission has actually a different plan: They will create a center where there are people who will look at suspicious chat contents.');
+    await d.you('And if the suspicion is justified, they will hand over the information to Europol.');
+    await d.me('That means the EU kommissionen doesn\'t actually think that the system is so smart?');
+    await d.you('Obviously not. But having people read our personal chat messages, just because some "smart" software says that we are child molesters, is not any better', true);
+    await d.me('What is the stupid "smart" technology that will be used?');
+    await d.you('Ha! That\'s an interesting story');
+    await d.you('There is an organisation called "Thorn". They produce software-based filters. An important investor and lobbyist from that organisation is Ashton Kutcher. He often visits the EU commission to promote his software');
+    await d.you('And of course he claims that his software can magically solve child abuse problems');
+    await d.you('I hate it when people are so blinding trusting technology and buy into all that marketing bullshit.');
+    await d.me('That means that the proposed law is actually the result of a comercial lobbying effort?');
+    await d.you('I think so');
+    await d.me('And lastly, what about scanning of illegal conversations?');
+    await d.you('No system has ever passed the Turing test');
+    await d.you('Computers are still far away from understanding human language on the same level as us humans');
+    await d.you('Algorithms can in some cases identify the topic of a conversation but there is no actual understanding behind the current technology');
+    await d.end('The nerd is rebooting');
+}
+
+async function dialog_ylva_dase() {
+    let d = new Dialog();
+    current_dialog = d;
+    await d.me('Hé, ik hoorde dat u verantwoordelijk bent voor het chatcontrole wetsvoorstel');
+    await d.you('Dit gaat niet om chatcontrole. Dit gaat om het voorkomen en bestrijden van criminaliteit');
+    await d.me('Okee');
+    await d.me('Maar waarom denkt u dat dit voorstel een goed idee is?');
+    await d.you('Dat heb ik allemaal al uitgelegd toen ik in 2022 de Big Brother-prijs won.', true);
+    await d.you('Je kunt de video-opnames hier bekijken:');
+    await d.you('https://chatcontrol.dk/en/bigbrother.html');
+    await d.me('Bedankt!');
+    await d.end('Ylva is meer wetten aan het opstellen');
+}
+
+
+async function dialog_ylva_en() {
+    let d = new Dialog();
+    current_dialog = d;
+    await d.me('Hi, I heard that you are responsible for the chatcontrol proposal');
+    await d.you('This is not about chatcontrol. It is about creating rules to prevent and fight sexual violence against children');
+    await d.me('Alright');
+    await d.me('But why do you think this proposal is a good idea?');
+    await d.you('I explained all of that when I received the big brother award in 2022.', true);
+    await d.you('You can find the video recording here:');
+    await d.you('https://chatcontrol.dk/en/bigbrother.html');
+    await d.me('Thank you!');
+    await d.end('Ylva is back to drafting more laws');
+}
+
+
+
+const contact_list = {
+  "da": [
+    {name: "Vriendin",
+     dialog: dialog_ven_da},
+    {name: "Mama",
+     dialog: dialog_mor_da},
+    {name: "Lieffie ❤️",
+     dialog: dialog_kaereste_da},
+    {name: "Politie",
+     dialog: dialog_politi_da},
+    {name: "Helpdesk",
+     dialog: dialog_support_da},
+    {name: "Buur",
+     dialog: dialog_nabopige_da},
+    {name: "Hacker",
+     dialog: dialog_hacker_da},
+    {name: "Erasmusvriend",
+     dialog: dialog_erasmus_da},
+    {name: "Nerd",
+     dialog: dialog_nerd_da},
+    {name: "Ylva Johansson",
+     dialog: dialog_ylva_dase}
+  ],
+  "en": [
+    {name: "Friend",
+     dialog: dialog_ven_en},
+    {name: "Mom",
+     dialog: dialog_mor_en},
+    {name: "Sweetheart ❤️",
+     dialog: dialog_kaereste_en},
+    {name: "Police friend",
+     dialog: dialog_politi_en},
+    {name: "Chat support",
+     dialog: dialog_support_en},
+    {name: "Neighbor",
+     dialog: dialog_nabopige_en},
+    {name: "Hacker",
+     dialog: dialog_hacker_en},
+    {name: "Erasmus",
+     dialog: dialog_erasmus_en},
+    {name: "Nerd",
+     dialog: dialog_nerd_en},
+    {name: "Ylva Johansson",
+     dialog: dialog_ylva_en}
+  ]
+};
+
+function fill_contact_list(lang) {
+  let x = 15;
+  let y = 75;
+  let y_step = 25;
+  let group = document.getElementById('contacts');
+  removeAllChildren(group);
+
+  let contacts = contact_list[lang];
+  for(let i=0; i < contacts.length; i++) {
+    let text = create_svg_node('text', {
+      x: x,
+      y: y
+    });
+    y += y_step;
+    let contact = contacts[i];
+    text.onclick = function() { start_chat(i) };
+    text.appendChild(document.createTextNode(contact.name));
+    group.appendChild(text);
+  }
+}
+
+function run() {
+   fill_contact_list(current_language);
+   start_chat(current_discussion_index);
+}
+]]></script>
+  <!-- [right] contact name view -->
+  <g
+     id="contact_name_box">
+    <rect
+       x="300"
+       y="0"
+       width="300"
+       height="50"
+       fill="#F5F5F5"
+       id="rect59" />
+    <polyline
+       points="300,20 320,0 320,40"
+       fill="#0084ff"
+       onclick="swipe_viewport()"
+       id="to_contact_list_button"
+       transform="translate(6,4)" />
+    <text
+       x="343"
+       y="28"
+       id="contact_indicator"
+       inkscape:label="contact_indicator">laden...</text>
+    <g
+       transform="scale(0.5,0.5)"
+       id="g71" />
+  </g>
+  <!-- [right] messages view -->
+  <rect
+     id="message_box"
+     x="300"
+     y="50"
+     width="300"
+     height="450"
+     fill="white" />
+  <g
+     id="messages" />
+  <!-- [right] message status -->
+  <rect
+     id="message_status_box"
+     x="300"
+     y="520"
+     fill="#ce2900"
+     width="300"
+     height="30" />
+  <text
+     id="message_status"
+     x="310"
+     y="540"
+     fill="white">status</text>
+  <!-- [right] text input -->
+  <rect
+     id="message_input_box"
+     x="300"
+     y="550"
+     stroke="black"
+     fill="white"
+     width="250"
+     height="50"
+     onclick="return set_typing_speed" />
+  <rect
+     id="message_submit_box"
+     x="530"
+     y="550"
+     stroke="black"
+     fill="#CCCCCC"
+     width="100"
+     height="50" />
+  <text
+     id="message_input_data"
+     x="310"
+     y="575"
+     fill="black" />
+  <text
+     id="message_submit_button"
+     x="539"
+     y="580"
+     fill="black">STUUR</text>
+  <!-- [left] contact list -->
+  <rect
+     x="0"
+     y="0"
+     width="300"
+     height="50"
+     fill="#E4E6EB"
+     id="rect82" />
+  <text
+     x="60"
+     y="30"
+     id="text84">Jouw contacten</text>
+  <rect
+     x="0"
+     y="50"
+     width="300"
+     height="550"
+     style="stroke: green; stroke-width: 0px"
+     fill="white"
+     id="rect86" />
+  <!-- contact list -->
+  <g
+     id="contacts" />
+</svg>
