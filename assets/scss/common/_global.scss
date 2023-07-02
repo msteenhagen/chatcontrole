@@ -106,7 +106,7 @@ a.btn:focus {
   height: 2rem;
   vertical-align: text-top;
 }
-*/
+/*
 
 /*
 body {
@@ -285,4 +285,110 @@ body {
   .modal-backdrop.show {
     opacity: 0;
   }
+}
+
+// Chatapp phone CSS
+
+#language_choice{
+  grid-area: 1 / 1 / 2 / 4;
+  font-size: 24px;
+}
+
+#language_choice img{
+  object-fit:cover;
+  width:42px;
+  border-radius:5px;
+}
+
+#intro{
+  grid-area: 2 / 3 / 3 / 4;
+}
+#phone{
+  grid-area: 2 / 1 / 3 / 2;
+}
+
+#more{
+  padding-top:80px;
+  grid-area: 3 / 1 / 3 / 4;
+}
+
+#more, #sponsors{
+  font-size:1.3em;
+}
+
+#sponsors{
+  grid-area: 4 / 1 / 4 / 4;
+}
+
+.besked {
+    color: #FFFFFF;
+    background-color: #0084FF;
+    border-radius: 25px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+}
+
+.besked:after {
+	content: '';
+	position: absolute;
+	right: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-left-color: #0084FF;
+	border-right: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+	margin-right: -20px;
+}
+
+.phone-container {
+  background-repeat:no-repeat;
+  background-position: center top;
+  min-height: 800px;
+}
+
+
+#index-more-info {
+  position: relative;
+}
+
+#phone>div {
+  background-repeat:no-repeat;
+  background-position: center top;
+}
+
+#movie {
+  margin-left: 0px;
+  margin-top: 77px;
+  position: center;
+}
+
+#movie-sidetext {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+#backarrow{
+  display: flex;
+  align-items: center;
+}
+
+a[href="#more"]{
+  display:inline-block;
+  padding: 6px 8px;
+  border-radius:5px;
+  background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+  font-size:1.3em;
+  color:rgba(39, 15, 15, 0.746);
+  border:1px solid rgba(255, 255, 255, 0.717);
+  float:right;
+}
+
+.about-link {
+  float: right;
 }

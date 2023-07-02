@@ -9,3 +9,5 @@ Criminaliteit bestrijden is op zich uiteraard prima, maar de voorgestelde wet is
 Het scannen van al onze digitale communicatie zou een grove inbreuk vormen op de fundamentele rechten van Nederlandse burgers.
 
 Deze website geeft informatie over wat chatcontrole is, waarom het schadelijk is en wat er tegen gedaan kan worden.
+
+Heb je goede ideeën of wil je helpen? Heel graag! Stuur een bericht of een mailtje op `chatcontrole` at `proton.me`.

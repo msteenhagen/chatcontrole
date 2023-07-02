@@ -6,12 +6,38 @@
     </div>
     <div class="col-lg-9 col-xl-8 text-center">
       <p class="lead">{{ .Params.lead | safeHTML }}</p>
-      <!-- <a class="btn btn-primary btn-lg px-4 mb-2" href="/docs/{{ if .Site.Params.options.docsVersioning }}{{ .Site.Params.docsVersion }}/{{ end }}prologue/introduction/" role="button">{{ i18n "get-started" }}</a>
-      <p class="meta">Open-source MIT Licensed. <a href="https://github.com/h-enk/doks">GitHub v{{ $data := getJSON "/package.json" }}{{ $data.version }}</a></p> -->
+      <a class="btn btn-primary btn-lg px-4 mb-2" href="#wat-is-er-aan-de-hand" role="button">{{ i18n "more-info" }}</a>
+      <!-- <p class="meta">Open-source MIT Licensed. <a href="https://github.com/h-enk/doks">GitHub v{{ $data := getJSON "/package.json" }}{{ $data.version }}</a></p> -->
     </div>
   </div>
 </section>
 {{ end }}
+
+{{ define "phone" }}
+<section class="section container-fluid mt-n3 pb-3">
+  <div class="row justify-content-center text-left">
+    <div class="col-lg-9">
+      <div id="index-more-info">
+        <h2>Bekijk het zelf</h2>
+        <p>
+          Hoe zou chatcontrole je online gesprekken kunnen beïnvloeden? Ontdek het zelf 
+          in de volgende interactieve animatie.
+        </p>
+        <p><b>💡 Tip:</b> Klik op de driehoekige pijl linksboven 
+          op de telefoon om een ander gesprek te kiezen.
+        </p>
+      </div>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-12 text-center">
+      {{ partial "content/phone.html" . }}
+    </div>
+  </div>
+</section>
+{{ end }}
+
+
 
 {{ define "sidebar-prefooter" }}
   <!-- {{ if eq $.Site.Language.LanguageName "English" }}
@@ -54,7 +80,9 @@
 <section class="section section-sm container-fluid">
   <div class="row justify-content-center text-left">
     <div class="col-lg-9">
-      {{- .Content -}}
+      <div id="index-more-info">
+        {{- .Content -}}
+      </div>
     </div>
   </div>
 </section>

@@ -21,10 +21,10 @@ Wat betekent dit concreet? Concreet betekent dit dat al je e-mails, al je berich
 
 De wet zal vrijwel alle digitale communicatiediensten die we in Nederland gebruiken treffen. Bijvoorbeeld:
 
-- Berichtendiensten zoals Whatsapp, Snapchat, Telegram of Twitter
-- Sociale media zoals Instagram, TikTok of Facebook
-- Berichten in spelletjes zoals FIFA, Minecraft, GTA, en Call of Duty
-- Videobellen, zoals op Zoom, Skype, of Facetime
+- berichtendiensten zoals Whatsapp, Snapchat, Telegram of Twitter
+- sociale media zoals Instagram, TikTok of Facebook
+- berichten in spelletjes zoals FIFA, Minecraft, GTA, en Call of Duty
+- videobellen, zoals op Zoom, Skype, of Facetime
 
 Al jouw berichten zullen worden gescand. Alle gebruikers van publieke communicatiediensten worden bij voorbaat al verdacht van crimineel gedrag.
 
