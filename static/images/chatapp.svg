@@ -987,11 +987,11 @@ async function dialog_hacker_da() {
     await d.you('ja, ik had het druk door die chatcontrole');
     await d.me('oh, dus je weet er al van?');
     await d.you('ja, aanvallen op de privacy nemen wij hackers vaak erg serieus');
-    await d.you('omdat we denken dat je privéleven op internet net zo privé zou moeten zijn als in het "echte" leven offline');
+    await d.you('omdat we denken dat je privéleven op internet net zo privé zou moeten zijn als in het leven offline');
     await d.me('en wat moet er dan aan gedaan worden?');
     await d.you('nou, technisch gezien is de oplossing simpel: je versleutelt je berichten voordat de scanner ze te pakken krijgt');
     await d.you('met andere woorden, je gebruikt extra software die je berichten beschermt');
-    await d.you('ik heb trouwens zulke software ontwikkelt. Het is een plugin in ons chatprogramma');
+    await d.you('ik heb trouwens zulke software ontwikkeld. Het is een plugin in ons chatprogramma');
     await d.you('en met mijn plugin blijf je veilig');
     await d.you('ik stuur je het bestand direct door');
     await d.me('bedankt, ik heb het ontvangen.');
