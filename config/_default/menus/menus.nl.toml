@@ -11,14 +11,14 @@
   url = "/docs/help/"
 
 [[main]]
+  name = "Achtergrond"
+  url = "/docs/"
+  weight = 10
+  
+[[main]]
   name = "Over chatcontrole.nl"
   url = "/over/"
-  weight = 10
-
-# [[main]]
-#   name = "Blog"
-#   url = "/blog/"
-#   weight = 20
+  weight = 20
 
 # [[social]]
 #  name = "GitHub"
