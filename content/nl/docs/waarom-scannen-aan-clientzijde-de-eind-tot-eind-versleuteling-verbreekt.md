@@ -1,6 +1,6 @@
 ---
 title: "Waarom scannen aan de cliëntzijde de eind-to-eind-versleuteling verbreekt"
-description: "Answers to frequently asked questions."
+description: "Bespreking van waarom het scannen aan cliëntzijde de eind-tot-eind-versleuteling van digitale communicatie verbreekt."
 lead: "Oorspronkelijke publicatie: <a href='https://www.eff.org/deeplinks/2019/11/why-adding-client-side-scanning-breaks-end-end-encryption'>Why Adding Client-Side Scanning Breaks End-To-End Encryption</a> <br> Auteur: Erica Portnoy<br> Publicatie: Electronic Frontier Foundation<br> 
 Datum: 1 november 2019<br> Hier de vertaling in het Nederlands."
 date: 2020-10-06T08:49:31+00:00
