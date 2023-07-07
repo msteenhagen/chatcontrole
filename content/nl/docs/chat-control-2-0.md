@@ -189,13 +189,16 @@ Telefoon: (+32) 2679 1711
 [LinkedIn](https://www.linkedin.com/company/permanente-vertegenwoordiging-van-het-koninkrijk-der-nederlanden-bij-de-europese-unie/)  
 Contacturen: Maa-Vrij 09:00-16:30 uur
 - Neem contact op met je leden van het Europees Parlement! De zogenaamde schaduwrapporteurs hebben de leiding over de onderhandelingen. Hier vind je de contactgegevens:
-   - [Javier Zarzalejos](https://www.europarl.europa.eu/meps/en/197606/JAVIER_ZARZALEJOS/home)---rapporteur voor de EVP-fractie
-   - [Paul Tang](https://www.europarl.europa.eu/meps/en/125020/PAUL_TANG/home)---schaduwrapporteur voor de S&D-fractie
-   - [Patrick Breyer](http://patrick-breyer.de/)---schaduwrapporteur voor de Verts/ALE-fractie
-   - [Hilde Vautmans](https://www.europarl.europa.eu/meps/en/130100/HILDE_VAUTMANS/home)---schaduwrapporteur voor de Renew-groep
-   - [Annalisa Tardino](https://www.europarl.europa.eu/meps/en/197806/ANNALISA_TARDINO/home)---schaduwrapporteur voor de ID-fractie
-   - [Vincenzo Sofo](https://www.europarl.europa.eu/meps/en/204334/VINCENZO_SOFO/home)---schaduwrapporteur voor de ECR-fractie
-   - [Cornelia Ernst](https://www.europarl.europa.eu/meps/en/96852/CORNELIA_ERNST/home)---schaduwrapporteur voor de Linkse fractie
+
+Onderhandelaar | Contactgegevens
+-- | --
+**[Javier Zarzalejos](https://www.europarl.europa.eu/meps/nl/197606/JAVIER_ZARZALEJOS/home)**, rapporteur voor de fractie van de Europese Volkspartij (christendemocraten) | [Email](mailto:javier.zarzalejos@europarl.europa.eu) • [Twitter](https://twitter.com/fzarzalejos) <br> Telefoon: 0032 228 45634
+**[Paul Tang](https://www.europarl.europa.eu/meps/nl/125020/PAUL_TANG/home)**, schaduwrapporteur voor de fractie van de Progressieve Alliantie van Socialisten en Democraten | [Email](mailto:paul.tang@europarl.europa.eu) • [Twitter](https://twitter.com/paultang) • [Facebook](https://www.facebook.com/PaulTangPvdA) • [Instagram](https://www.instagram.com/_paultang_/) <br> Telefoon: 0032 228 45626
+**[Patrick Breyer](https://www.patrick-breyer.de/en/)**, schaduwrapporteur voor De Groenen/Europese Vrije Alliantie-groep | [Mastodon](https://digitalcourage.social/@echo_pbreyer) • [Twitter](https://twitter.com/echo_pbreyer) • [Instagram](https://www.instagram.com/patrickbreyer_mep/) <br> Telefoon: 0032 228 45664
+**[Hilde Vautmans](https://www.europarl.europa.eu/meps/nl/130100/HILDE_VAUTMANS/home)**, schaduwrapporteur voor de fractie Renew Europe | [Email](mailto:hilde.vautmans@europarl.europa.eu) • [Twitter](https://twitter.com/hildevautmans) • [Facebook](https://www.facebook.com/HVautmans/) • [Instagram](https://www.instagram.com/hilde.vautmans/) <br> Telefoon: 0032 228 45661 
+**[Annalisa Tardino](https://www.europarl.europa.eu/meps/nl/197806/ANNALISA_TARDINO/home)**, schaduwrapporteur voor de fractie Identiteit en Democratie | [Email](mailto:annalisa.tardino@europarl.europa.eu) • [Twitter](https://www.facebook.com/VotaAnnalisaTardino/) • [Facebook](https://www.facebook.com/VotaAnnalisaTardino/) <br> Telefoon: 0032 228 45749
+**[Vincenzo Sofo](https://www.europarl.europa.eu/meps/nl/204334/VINCENZO_SOFO/home)**, schaduwrapporteur voor de fractie Europese Conservatieven en Hervormers | [Email](mailto:vincenzo.sofo@europarl.europa.eu) <br> Telefoon: 0032 228 45438
+**[Cornelia Ernst](https://www.europarl.europa.eu/meps/nl/96852/CORNELIA_ERNST/home)**, schaduwrapporteur voor de Linkse Fractie in het Europees Parlement - GUE/NGL | [Email](mailto:cornelia.ernst@europarl.europa.eu) • [Twitter](https://twitter.com/ernstcornelia) <br> Telefoon: 0032 228 45660
 
 Vertel hen beleefd je zorgen over chatcontrole ([lees de argumenten hier](#aanvullende-informatie-en-argumenten)). Ervaring leert dat telefoontjes effectiever zijn dan emails of brieven. De officiële naam van de geplande verplichte chatcontrolewet is 'Voorstel voor een verordening houdende regels ter voorkoming en bestrijding van seksueel misbruik van kinderen'.
 
