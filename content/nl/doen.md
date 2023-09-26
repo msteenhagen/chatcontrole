@@ -7,7 +7,7 @@ draft: false
 images: []
 ---
 
-## 1 oktober 2023: Demonstratie tegen chatcontrole
+## 1 oktober 2023: Demonstratie tegen Chatcontrole
 
 - **Wat?** Een demonstratie tegen het chatcontrole-voorstel van de EU.
 - **Waar?** De Dam in Amsterdam ([op kaart](https://www.openstreetmap.org/?mlat=52.37309&mlon=4.89246#map=18/52.37310/4.89245))
